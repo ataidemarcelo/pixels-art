@@ -20,4 +20,22 @@ for (let index = 0; index < colorPalette.length; index += 1) {
   });
 }
 
-// console.log(colorPalette);
+// console.log(pixels);
+
+function fillPixel(item) {
+  const element = item;
+  const selectedDiv = document.querySelector('.selected');
+  const cssObj = window.getComputedStyle(selectedDiv, null);
+  const colorSelected = cssObj.getPropertyValue('background-color');
+
+  element.style.backgroundColor = `${colorSelected}`;
+  console.log(colorSelected);
+}
+
+const pixels = document.getElementsByClassName('pixel');
+for (let index = 0; index < pixels.length; index += 1) {
+  pixels[index].addEventListener('click', (event) => {
+    console.log('clicouuu');
+    fillPixel(event.target);
+  });
+}
