@@ -104,3 +104,19 @@ function generateNewBoard() {
 
 const btnGenerateBoard = document.getElementById('generate-board');
 btnGenerateBoard.addEventListener('click', generateNewBoard);
+
+function generateColor() {
+  const color = document.getElementsByClassName('color');
+
+  for (let index = 1; index < color.length; index += 1) {
+    color[0].style.backgroundColor = 'black';
+
+    const red = Math.floor(Math.random() * 255);
+    const green = Math.floor(Math.random() * 255);
+    const blue = Math.floor(Math.random() * 255);
+
+    color[index].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+  }
+}
+
+generateColor();
