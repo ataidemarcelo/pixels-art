@@ -1,7 +1,33 @@
+function generateDivPixel(size, divContainer) {
+  for (let secondIndex = 0; secondIndex < size; secondIndex += 1) {
+    const divPixel = document.createElement('div');
+    divPixel.className = 'pixel';
+    divContainer.appendChild(divPixel);
+  }
+}
+
+function generateBoard(size) {
+  const main = document.getElementById('main');
+  const section = document.createElement('section');
+
+  section.id = 'pixel-board';
+  main.appendChild(section);
+
+  for (let index = 0; index < size; index += 1) {
+    const divContainerPixels = document.createElement('div');
+    divContainerPixels.className = 'pixels';
+    section.appendChild(divContainerPixels);
+    generateDivPixel(size, divContainerPixels);
+  }
+}
+
+function removeBoard() {
+  const section = document.getElementById('pixel-board');
+  section.remove();
+}
+
 const bgBlack = document.querySelector('.bg-black');
 bgBlack.classList.add('selected');
-
-const colorPalette = document.getElementsByClassName('color');
 
 function addClassSelected(item) {
   item.classList.add('selected');
@@ -13,15 +39,18 @@ function removeClassSelected(collection) {
   }
 }
 
-for (let index = 0; index < colorPalette.length; index += 1) {
-  colorPalette[index].addEventListener('click', (event) => {
-    removeClassSelected(colorPalette);
-    addClassSelected(event.target);
-  });
+function toggleClassSelected() {
+  const colorPalette = document.getElementsByClassName('color');
+  for (let index = 0; index < colorPalette.length; index += 1) {
+    colorPalette[index].addEventListener('click', (event) => {
+      removeClassSelected(colorPalette);
+      addClassSelected(event.target);
+    });
+  }
 }
 
-function fillPixel(item) {
-  const element = item;
+function paintWithSelectedColor(target) {
+  const element = target;
   const selectedDiv = document.querySelector('.selected');
   const cssObj = window.getComputedStyle(selectedDiv, null);
   const colorSelected = cssObj.getPropertyValue('background-color');
@@ -30,11 +59,18 @@ function fillPixel(item) {
 }
 
 const pixels = document.getElementsByClassName('pixel');
-for (let index = 0; index < pixels.length; index += 1) {
-  pixels[index].addEventListener('click', (event) => {
-    fillPixel(event.target);
-  });
+
+function fillPixel() {
+  for (let index = 0; index < pixels.length; index += 1) {
+    pixels[index].addEventListener('click', (event) => {
+      paintWithSelectedColor(event.target);
+    });
+  }
 }
+
+generateBoard(5);
+toggleClassSelected();
+fillPixel();
 
 function clearBoard() {
   for (let index = 0; index < pixels.length; index += 1) {
@@ -44,3 +80,21 @@ function clearBoard() {
 
 const btnClearBoard = document.getElementById('clear-board');
 btnClearBoard.addEventListener('click', clearBoard);
+
+function generateNewBoard() {
+  const input = document.getElementById('board-size');
+  if (input.value === '') {
+    alert('Board inválido!');
+    return;
+  }
+
+  const newSize = input.value;
+
+  removeBoard();
+  generateBoard(newSize);
+  toggleClassSelected();
+  fillPixel();
+}
+
+const btnGenerateBoard = document.getElementById('generate-board');
+btnGenerateBoard.addEventListener('click', generateNewBoard);

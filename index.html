@@ -11,7 +11,7 @@
   <header>
     <h1 id="title">Paleta de Cores</h1>
   </header>
-  <main>
+  <main id="main">
     <section id="color-palette">
       <div id="b" class="color bg-black"></div>
       <div class="color bg-blue"></div>
@@ -19,43 +19,11 @@
       <div class="color bg-green"></div>
     </section>
     <button id="clear-board">Limpar</button>
-    <section id="pixel-board">
-      <div class="pixels">
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-      </div>
-      <div class="pixels">
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-      </div>
-      <div class="pixels">
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-      </div>
-      <div class="pixels">
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-      </div>
-      <div class="pixels">
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-      </div>
-    </section>
+
+    <div>
+      <input type="number" id="board-size" min="1">
+      <button id="generate-board">VQV</button>
+    </div>
   </main>
 
   <script src="./script.js"></script>
