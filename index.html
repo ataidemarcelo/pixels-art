@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html lang="ept-BR">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Projeto Pixel Arts</title>
+
+  <meta name="description" content="Este é um projeto prático de programação web, o Projeto Pixel Arts da Trybe: que mostra como criar desenhos pixelizados usando uma paleta de cores interativa e ensina conceitos essenciais de desenvolvimento web. Ideal para iniciantes!">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
-  <title>Project Pixel Arts</title>
 </head>
-<body>
-  <header>
+<body class="wrapper">
+  <header class="header">
     <h1 id="title">Paleta de Cores</h1>
   </header>
-  <main id="main">
-    <section id="color-palette">
+
+  <main id="main" class="main">
+    <section id="color-palette" class="color-palette">
       <div id="b" class="color bg-black"></div>
       <div class="color bg-blue"></div>
       <div class="color bg-red"></div>
       <div class="color bg-green"></div>
     </section>
-    <button id="clear-board">Limpar</button>
+    <button id="clear-board" class="btn">Limpar</button>
 
-    <div>
-      <input type="number" id="board-size" min="1">
-      <button id="generate-board">VQV</button>
+    <div class="size-board">
+      <input type="number" id="board-size" min="1" placeholder="Escoha o tamanho do Board ex: (10X10)">
+      <button id="generate-board" class="btn">VQV</button>
     </div>
   </main>
+
+  <footer class="footer">Footer</footer>
 
   <script src="./script.js"></script>
 </body>

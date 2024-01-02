@@ -55,7 +55,10 @@ function paintWithSelectedColor(target) {
   const cssObj = window.getComputedStyle(selectedDiv, null);
   const colorSelected = cssObj.getPropertyValue('background-color');
 
-  element.style.backgroundColor = `${colorSelected}`;
+  const white = 'white'
+  const oldColor = element.style.backgroundColor
+
+  element.style.backgroundColor = oldColor === colorSelected ? `${white}` : `${colorSelected}`;
 }
 
 const pixels = document.getElementsByClassName('pixel');
@@ -68,7 +71,7 @@ function fillPixel() {
   }
 }
 
-generateBoard(5);
+generateBoard(10);
 toggleClassSelected();
 fillPixel();
 
@@ -90,10 +93,12 @@ function generateNewBoard() {
 
   let newSize = input.value;
 
-  if (newSize < 5) {
+  if (newSize <= 4) {
+    alert('Tamanho mínimo 5')
     newSize = 5;
-  } else if (newSize > 50) {
-    newSize = 50;
+  } else if (newSize > 14) {
+    alert('Tamanho máximo 14')
+    newSize = 14;
   }
 
   removeBoard();
